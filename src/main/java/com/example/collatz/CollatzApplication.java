@@ -8,11 +8,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+import com.example.collatz.config.ParallelProperties;
+import com.example.collatz.config.ServiceProperties;
+import com.example.collatz.service.CollatzService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootApplication
-@EnableConfigurationProperties(ServiceProperties.class)
+@EnableConfigurationProperties({ServiceProperties.class, ParallelProperties.class})
 public class CollatzApplication {
 
 	public static void main(String[] args) {

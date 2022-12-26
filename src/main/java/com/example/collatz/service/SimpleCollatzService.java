@@ -1,4 +1,4 @@
-package com.example.collatz;
+package com.example.collatz.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,16 +9,10 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-@Service("simple")
-public class SimpleCollatzService implements CollatzService {
+import com.example.collatz.LengthInfo;
 
-    private long next(long n) {
-        if (n % 2 == 0) {
-            return n / 2;
-        } else {
-            return 3 * n + 1;
-        }
-    }
+@Service("simple")
+public class SimpleCollatzService extends AbstractCollatzService implements CollatzService {
 
     private Set<Long> chain(long n) {
         Set<Long> chain = new LinkedHashSet<>();
@@ -28,6 +22,7 @@ public class SimpleCollatzService implements CollatzService {
         return chain;
     }
 
+    @Override
     public LengthInfo findMaxLength(int max) {
         Map<Integer, List<Integer>> clen = new HashMap<>();
         for (int i = 1; i <= max; i++) {

@@ -1,2 +1,4 @@
 service:
   type: simple
+parallel:
+  level: 4

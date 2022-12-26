@@ -1,4 +1,4 @@
-package com.example.collatz;
+package com.example.collatz.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -12,7 +12,7 @@ public record ServiceProperties(ServiceType type) {
     @Getter
     @AllArgsConstructor
     public enum ServiceType {
-        SIMPLE("simple"), CACHED("cached");
+        SIMPLE("simple"), CACHED("cached"), PARALLEL("parallel");
         @Nonnull
         private final String name;
     }
