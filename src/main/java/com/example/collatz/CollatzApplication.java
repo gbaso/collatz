@@ -1,8 +1,9 @@
 package com.example.collatz;
 
+import java.util.List;
 import java.util.Map;
 
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,13 +25,14 @@ public class CollatzApplication {
     }
 
     @Bean
-    CommandLineRunner runner(Map<String, CollatzService> serviceMap, ServiceProperties service) {
+    ApplicationRunner runner(Map<String, CollatzService> serviceMap, ServiceProperties service) {
         return args -> {
-            if (args.length < 1) {
+            List<String> nonOptArgs = args.getNonOptionArgs();
+            if (nonOptArgs.isEmpty()) {
                 log.info("pass the starting number you dolt!");
                 System.exit(1);
             }
-            int max = Integer.parseInt(args[0]);
+            int max = Integer.parseInt(nonOptArgs.get(0));
             var collatzService = serviceMap.get(service.type().getName());
             var info = collatzService.findMaxLength(max);
             log.info("Max length {} for starting value(s): {}", info.length(), info.starts());
