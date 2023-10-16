@@ -15,7 +15,6 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
-		<mainClass>com.example.collatz.CollatzApplication</mainClass>
 	</properties>
 	<dependencies>
 		<dependency>
